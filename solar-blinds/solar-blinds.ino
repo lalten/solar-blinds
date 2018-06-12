@@ -8,13 +8,8 @@
 #include <Servo.h> 
 #include <BlynkSimpleEsp8266.h>
 
+#include "config.h" // SSID, PASS, AUTH, LAT, LONG are defined here
 
-char ssid[] = "XXX"; //  your network SSID (name)
-char pass[] = "XXX"; // your network password
-char auth[] = "XXX"; // Blynk Auth
-
-#define LAT  00.00
-#define LONG 00.00
 
 // Central European Time (Frankfurt, Paris)
 TimeChangeRule CEST = {"CEST", Last, Sun, Mar, 2, 120};     // Central European Summer Time
@@ -52,7 +47,7 @@ void setup()
 {
   Serial.begin(115200);
 
-  WiFi.begin(ssid, pass);
+  WiFi.begin(SSID, PASS);
   while ( WiFi.status() != WL_CONNECTED ) {
     delay ( 500 );
     Serial.print ( "." );
@@ -62,7 +57,7 @@ void setup()
 
   sm.init(0, LAT, LONG);
 
-  Blynk.config(auth);
+  Blynk.config(AUTH);
   Blynk.connect();
   Blynk.syncVirtual(V1);
   

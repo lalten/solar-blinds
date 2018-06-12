@@ -1,0 +1,2 @@
+# Ignore config file with passwords etc
+config.h
