@@ -214,11 +214,11 @@ void loop()
     // if we're already (halfway) there, don't go back during fade
     if(SERVO_OPENED > SERVO_CLOSED)
     {
-      servo_us = _max(servo_us, fade_us);
+      servo_us = _min(servo_us, fade_us);
     }
     else
     {
-      servo_us = _min(servo_us, fade_us);
+      servo_us = _max(servo_us, fade_us);
     }
     servo_enable_timeout = t_now + 5;
   }
